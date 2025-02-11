@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "KG7Avh8Djhk=",
+  "dgSpecHash": "RQqVoG4FgaE=",
   "success": true,
   "projectFilePath": "C:\\OWO\\Proyectos\\OWO_modSubnautica\\OWO_Subnautica.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\devel\\.nuget\\packages\\owo\\2.4.2\\owo.2.4.2.nupkg.sha512"
+  ],
   "logs": []
 }

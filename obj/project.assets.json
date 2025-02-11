@@ -1,11 +1,45 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "OWO/2.4.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/OWO.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/OWO.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "OWO/2.4.2": {
+      "sha512": "co/LsxebKFv2ZHL97rar5i1lAmGvl0Z9P08iF/i8R5hqaOzNsbuFNqHWArVmq9MBQArkUQyQpRa3oygDZv46Ig==",
+      "type": "package",
+      "path": "owo/2.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net48/OWO.dll",
+        "lib/net48/OWO.xml",
+        "lib/net6.0/OWO.dll",
+        "lib/net6.0/OWO.xml",
+        "owo.2.4.2.nupkg.sha512",
+        "owo.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "OWO >= 2.4.2"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\devel\\.nuget\\packages\\": {},
@@ -56,6 +90,12 @@
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
+        "dependencies": {
+          "OWO": {
+            "target": "Package",
+            "version": "[2.4.2, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

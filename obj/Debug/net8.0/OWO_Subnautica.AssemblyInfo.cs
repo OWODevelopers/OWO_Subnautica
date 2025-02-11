@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OWO_Subnautica")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a2ce05d6284595fd2cd909e5a52830bbe9f9e9b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbd463a3ed5ee91d2cc9168c125d66bd70405bab")]
 [assembly: System.Reflection.AssemblyProductAttribute("OWO_Subnautica")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OWO_Subnautica")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

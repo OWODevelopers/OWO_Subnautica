@@ -49,6 +49,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "OWO": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
