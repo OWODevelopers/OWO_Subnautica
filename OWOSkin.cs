@@ -254,10 +254,60 @@ namespace OWO_Subnautica
         public void StopHeartBeat()
         {
             heartBeatIsActive = false;
+            heartbeatCount = 0;
         }
+
+        public void StartLowOxygen()
+        {
+            lowOxygenIsActive = true;
+            LowOxygenFuncAsync();
+        }
+
+        public void StopLowOxygen()
+        {
+            lowOxygenIsActive = false;
+            LowOxygenCount = 0;
+        }
+
+        public void StartLowFood()
+        {
+            lowFoodIsActive = true;
+            LowFoodFuncAsync();
+        }
+
+        public void StopLowFood()
+        {
+            lowFoodIsActive = false;
+            LowFoodCount = 0;
+        }
+
+        public void StartLowWater()
+        {
+            lowWaterIsActive = true;
+            LowWaterFuncAsync();
+        }
+
+        public void StopLowWater()
+        {
+            lowWaterIsActive = false;
+            LowWaterCount = 0;
+        }
+
+        public void StartTeleport()
+        {
+            if (teleportIsActive) return;
+
+            teleportIsActive = true;
+            TeleportFuncAsync();
+        }
+        public void StopTeleport()
+        {
+            teleportIsActive = false;
+        }
+
         public void StartSwimming()
         {
-            if (swimmingIsActive) return;
+            if (swimmingIsActive && !SwimmingEffectActive) return;
 
             swimmingIsActive = true;
             SwimmingFuncAsync();
@@ -300,6 +350,10 @@ namespace OWO_Subnautica
             StopSwimming();  
             StopDrilling(true);
             StopDrilling(false);
+            StopLowFood();
+            StopLowOxygen();
+            StopLowWater();
+            StopTeleport();            
 
             OWO.Stop();
         }
