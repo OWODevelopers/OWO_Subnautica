@@ -10,9 +10,26 @@ namespace OWO_Subnautica
         public bool suitDisabled = true;
         public bool systemInitialized = false;
         private static bool heartBeatIsActive = false;
+        private static bool lowOxygenIsActive = false;
+        private static bool lowFoodIsActive = false;
+        private static bool lowWaterIsActive = false;
         private static bool swimmingIsActive = false;
-        private static bool stringBowIsActive = false;
-        public static bool headUnderwater = false;
+        private static bool teleportIsActive = false;
+        private static bool drillingLIsActive = false;
+        private static bool drillingRIsActive = false;
+        private static bool drillingIsActive = false;
+
+        public int SwimmingDelay = 1000;
+        public float SwimmingIntensity = 0.1f;
+        public bool SwimmingEffectActive = false;
+        public bool SwimmingEffectStarted = false;
+        public bool seaGlideEquipped = false;
+
+        public int heartbeatCount = 0;
+        public int LowOxygenCount = 0;
+        public int LowFoodCount = 0;
+        public int LowWaterCount = 0;
+
         public Dictionary<String, Sensation> FeedbackMap = new Dictionary<String, Sensation>();
 
 
@@ -20,7 +37,7 @@ namespace OWO_Subnautica
         {
             RegisterAllSensationsFiles();
             InitializeOWO();
-        }
+        }        
 
         public void LOG(string logStr)
         {
@@ -136,11 +153,71 @@ namespace OWO_Subnautica
 
         public async Task HeartBeatFuncAsync()
         {
-            while (heartBeatIsActive)
+            while (heartBeatIsActive && heartbeatCount <= 25)
             {
                 Feel("Heartbeat", 0);
+                heartbeatCount++;
                 await Task.Delay(1000);
             }
+        }
+
+        public async Task LowOxygenFuncAsync()
+        {
+            while (lowOxygenIsActive && LowOxygenCount <= 25)
+            {
+                Feel("Low Oxygen", 0);
+                LowOxygenCount++;
+                await Task.Delay(1000);
+            }
+        }
+
+        public async Task LowFoodFuncAsync()
+        {
+            while (lowFoodIsActive && LowFoodCount <= 25)
+            {
+                Feel("Low Food", 0);
+                LowFoodCount++;
+                await Task.Delay(1000);
+            }
+        }
+
+        public async Task LowWaterFuncAsync()
+        {
+            while (lowWaterIsActive && LowWaterCount <= 25)
+            {
+                Feel("Low Water", 0);
+                LowWaterCount++;
+                await Task.Delay(1000);
+            }
+        }
+
+        public async Task TeleportFuncAsync()
+        {
+            while (teleportIsActive)
+            {
+                Feel("Teleport", 0);                
+                await Task.Delay(1000);
+            }
+        }
+
+        public async Task DrillingFuncAsync()
+        {
+            string toFeel = "";
+            while (drillingLIsActive || drillingRIsActive)
+            {
+                if (drillingRIsActive)
+                    toFeel = "Drilling R";
+
+                if (drillingLIsActive)
+                    toFeel = "Drilling L";
+
+                if (drillingLIsActive && drillingRIsActive)
+                    toFeel = "Drilling LR";
+
+                Feel(toFeel, 2);
+                await Task.Delay(1000);
+            }
+            drillingIsActive = false;
         }
 
         public async Task SwimmingFuncAsync()
@@ -150,6 +227,20 @@ namespace OWO_Subnautica
                 Feel("Swimming", 0);
                 await Task.Delay(1000);
             }
+
+            /*
+             while (true)
+            {
+                // Check if reset event is active
+                Swimming_mrse.WaitOne();
+                PlaybackHaptics("Swimming", true, SwimmingIntensity);
+                if (seaGlideEquipped)
+                {
+                    PlaybackHaptics("EnterWater_Arms", true, SwimmingIntensity);
+                }
+                Thread.Sleep(SwimmingDelay);
+            }
+             */
         }
 
         public void StartHeartBeat()
@@ -177,39 +268,38 @@ namespace OWO_Subnautica
             swimmingIsActive = false;
         }
 
-        public async Task BowFuncAsync()
+        public void StartDrilling(bool isRight)
         {
-            while (stringBowIsActive)
+            if (isRight)
+                drillingRIsActive = true;
+
+            if (!isRight)
+                drillingLIsActive = true;
+
+            if (!drillingIsActive)
+                DrillingFuncAsync();
+
+            drillingIsActive = true;
+        }
+
+        public void StopDrilling(bool isRight)
+        {
+            if (isRight)
             {
-                Feel("Hold Bow", 2);
-                await Task.Delay(1000);
+                drillingRIsActive = false;
             }
-        }
-
-        public void StartBow()
-        {
-            if (stringBowIsActive) return;
-
-            stringBowIsActive = true;
-            BowFuncAsync();
-        }
-
-        public void StopBow()
-        {
-            stringBowIsActive = false;
-        }
-
-        public async Task FeelStringBow()
-        {
-            Plugin.owoSkin.Feel("String Bow", 2);
-            StartBow();
+            else
+            {
+                drillingLIsActive = false;
+            }
         }
 
         public void StopAllHapticFeedback()
         {
             StopHeartBeat();
-            StopSwimming();
-            StopBow();
+            StopSwimming();  
+            StopDrilling(true);
+            StopDrilling(false);
 
             OWO.Stop();
         }
