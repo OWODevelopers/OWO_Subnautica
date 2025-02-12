@@ -53,8 +53,9 @@ namespace OWO_Subnautica
                 {
                     return;
                 }
-                if (__instance.isUnderwaterForSwimming.value)
+                if (__instance.isUnderwaterForSwimming.value && __instance.movementSpeed > 0)
                 {
+                    owoSkin.LOG($"Swimming speed: {__instance.movementSpeed}");
                     //start thread
                     owoSkin.StartSwimming();
                     //is seaglide equipped ?
