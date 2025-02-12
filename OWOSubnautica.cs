@@ -178,9 +178,9 @@ namespace OWO_Subnautica
                 owoSkin.Feel("Air Bladder");
             }
         }
-
-        [HarmonyPatch(typeof(Welder), "Weld")]
-        public class Welder
+        
+        [HarmonyPatch(typeof(Welder), "OnToolUseAnim")]
+        public class OnToolUseAnim
         {
             [HarmonyPostfix]
             public static void Postfix()
@@ -190,6 +190,19 @@ namespace OWO_Subnautica
                 owoSkin.StartDrilling(true);
             }
         }
+
+
+        //[HarmonyPatch(typeof(Welder), "Weld")]
+        //public class Welder
+        //{
+        //    [HarmonyPostfix]
+        //    public static void Postfix()
+        //    {
+        //        if (owoSkin.suitDisabled) return;
+
+        //        owoSkin.StartDrilling(true);
+        //    }
+        //}
 
         [HarmonyPatch(typeof(Welder), "StopWeldingFX")]
         public class StopWeldingFX
