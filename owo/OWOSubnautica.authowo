@@ -1,27 +1,27 @@
-0~Heartbeat~100,1,90,0,0,0,|0%100~weapon-0~#
-1~Low Oxygen~100,1,90,0,0,0,|0%100~weapon-0~#
-2~Low Food~100,1,90,0,0,0,|0%100~weapon-0~#
-3~Low Water~100,1,90,0,0,0,|0%100~weapon-0~#
-4~Swimming~100,1,90,0,0,0,|0%100~weapon-0~#
-5~Teleport~100,1,90,0,0,0,|0%100~weapon-0~#
-6~Air Bladder~100,1,90,0,0,0,|0%100~weapon-0~#
-7~Builder~100,1,90,0,0,0,|0%100~weapon-0~#
-8~Constructor~100,1,90,0,0,0,|0%100~weapon-0~#
-9~Vehicle Impact~100,1,90,0,0,0,|0%100~weapon-0~#
-10~Land After Jump~100,1,90,0,0,0,|0%100~weapon-0~#
-11~Exosuit Impact~100,1,90,0,0,0,|0%100~weapon-0~#
-12~Death~100,1,90,0,0,0,|0%100~weapon-0~#
-13~Enter Water~100,1,90,0,0,0,|0%100~weapon-0~#
-14~Exit Water~100,1,90,0,0,0,|0%100~weapon-0~#
-15~Recoil L~100,1,90,0,0,0,|0%100~weapon-0~#
-16~Recoil R~100,1,90,0,0,0,|0%100~weapon-0~#
-17~Knife Attack~100,1,90,0,0,0,|0%100~weapon-0~#
-18~Eating~100,1,90,0,0,0,|0%100~weapon-0~#
-19~Heal~100,1,90,0,0,0,|0%100~weapon-0~#
-20~Pickup Item~100,1,90,0,0,0,|0%100~weapon-0~#
-21~Grab Object~100,1,90,0,0,0,|0%100~weapon-0~#
-22~Cannon Shot~100,1,90,0,0,0,|0%100~weapon-0~#
-23~Splash~100,1,90,0,0,0,|0%100~weapon-0~#
-24~Statis Charging~100,1,90,0,0,0,|0%100~weapon-0~#
-25~Impact~100,1,90,0,0,0,|0%100~weapon-0~#
-26~Scanning~100,1,90,0,0,0,|0%100~weapon-0~
+0~Air Bladder~100,1,90,0,0,0,|0%100~weapon-0~#
+1~Builder~100,1,90,0,0,0,|0%100~weapon-0~#
+2~Constructor~100,1,90,0,0,0,|0%100~weapon-0~#
+3~Vehicle Impact~100,1,90,0,0,0,|0%100~weapon-0~#
+4~Exosuit Impact~100,1,90,0,0,0,|0%100~weapon-0~#
+5~Death~40,11,80,0,900,0,Hit|0%100,1%100,3%100,2%100,7%100,9%100,8%100,6%100~~#
+6~Heal~100,2,65,200,0,0,Hit|3%100,2%100,9%100,8%100&70,1,65,0,0,0,Hit|3%41,2%43,9%44,8%48,6%100,7%100,1%100,0%100&70,2,65,0,200,0,Hit|1%100,0%100,6%100,7%100~health-2~#
+7~Cannon Shot~100,1,90,0,0,0,|0%100~weapon-0~#
+8~Splash~100,1,90,0,0,0,|0%100~weapon-0~#
+9~Statis Charging~100,1,90,0,0,0,|0%100~weapon-0~#
+10~Scanning~100,1,90,0,0,0,|0%100~weapon-0~#
+11~Heartbeat~100,2,70,0,100,0,Hit|1%100&100,3,70,0,200,0,Hit|1%100~health-0~Damage#
+12~Low Oxygen~20,1,90,100,0,0,Sharp Pain|0%100,1%100&100,1,90,100,0,0,Continous|0%100,1%100~environment-7~Damage#
+13~Low Food~80,1,75,0,100,1,Lost Fat|3%100,2%100&80,1,75,0,100,1,Lost Protein|3%100,2%100~alert-0~Damage#
+14~Low Water~80,1,75,0,100,1,Lost Fat|3%100,2%100&80,1,75,0,100,1,Lost Protein|3%100,2%100~alert-0~Damage#
+15~Impact~100,1,90,0,0,0,Hit~impact-0~Damage#
+16~Swimming~100,2,20,200,0,0,Stroke|0%100,1%100,7%100,6%100,8%100,9%100,3%100,2%100&100,2,20,200,0,6,Long Stroke|1%100,0%100,2%100,3%100,7%100,6%100,9%100,8%100~interaction-3~Interactions#
+17~Jump Landing~40,2,100,0,0,0,Land|9%100,8%100,2%100,3%100~environment-5~Interactions#
+18~Enter Water~70,1,50,0,0,0,Launch|9%100,8%100,3%100,2%100&60,1,60,100,0,0,Get In|1%100,0%100,4%100,7%100,6%100,5%100~interaction-1~Interactions#
+19~Exit Water~60,1,60,0,100,0,Leave|0%100,1%100,4%71,7%100,6%100,5%70&50,1,38,0,0,0,Get Up|3%100,2%100,8%100,9%100~interaction-1~Interactions#
+20~Eating~30,2,40,200,0,0,Hit|1%100,0%100&30,1,40,0,0,0,Hit|3%100,2%100,0%100,1%100&30,2,40,0,200,0,Hit|3%100,2%100~default~Interactions#
+21~Pickup Itemt~11,1,80,0,0,0,Hit|4%100&45,1,60,0,100,0,Store|4%100,7%100,6%100~reward-1~Interactions#
+22~Grab Object~11,1,80,0,0,0,Hit|4%100~reward-1~Interactions#
+23~Recoil L~11,1,70,0,0,0,|5%100~weapon-2~Weapons#
+24~Recoil R~11,1,70,0,0,0,|4%100~weapon-2~Weapons#
+25~Knife Attack~100,1,90,0,0,0,Hit|0%53,4%100~weapon-1~Melee#
+26~Teleport~55,2,70,200,0,0,Landing|3%100,2%100,9%100,8%100&55,1,70,0,0,0,Landing|0%100,7%100,6%100,1%100~magic-2~Interactions

@@ -325,7 +325,7 @@ namespace OWO_Subnautica
 
                 if (!__instance.motorMode.engineOn)
                 {
-                    owoSkin.Feel("Land After Jump");
+                    owoSkin.Feel("Jump Landing");
                     //Plugin.owoSkin.Feel("LandAfterJump", true, 1f, 4f);
                 }
             }
@@ -405,7 +405,7 @@ namespace OWO_Subnautica
             {
                 if (owoSkin.suitDisabled) return;
 
-                owoSkin.Feel("Land After Jump");
+                owoSkin.Feel("Jump Landing");
             }
         }
 
@@ -424,7 +424,7 @@ namespace OWO_Subnautica
 
                 if (grounded && timeLastJumped <= (double)Time.time)
                 {
-                    owoSkin.Feel("Land After Jump");
+                    owoSkin.Feel("Jump Landing");
                 }
             }
         }
