@@ -147,8 +147,6 @@ namespace OWO_Subnautica
 
         public void Feel(String key, int Priority = 0, float intensity = 1.0f, float duration = 1.0f)
         {
-            LOG($"SENSATION: {key}");
-
             if (FeedbackMap.ContainsKey(key))
             {
                 OWO.Send(FeedbackMap[key].WithPriority(Priority));

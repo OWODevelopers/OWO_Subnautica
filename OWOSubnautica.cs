@@ -39,7 +39,7 @@ namespace OWO_Subnautica
                 {
                     return;
                 }
-                owoSkin.Feel("PickUpItem");
+                owoSkin.Feel("Pickup Item");
             }
         }
 
