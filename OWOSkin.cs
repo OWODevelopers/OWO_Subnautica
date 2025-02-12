@@ -1,6 +1,11 @@
 ﻿using OWOGame;
 using System.Net;
+using System.Collections.Generic;
 using UnityEngine;
+using System.Data;
+using System.IO;
+using System.Threading.Tasks;
+using System;
 
 namespace OWO_Subnautica
 {
@@ -29,14 +34,14 @@ namespace OWO_Subnautica
         public int LowFoodCount = 0;
         public int LowWaterCount = 0;
 
-        public Dictionary<String, Sensation> FeedbackMap = new Dictionary<String, Sensation>();
+        public Dictionary<String, Sensation> FeedbackMap = new Dictionary<string, Sensation>();
 
 
         public OWOSkin()
         {
             RegisterAllSensationsFiles();
             InitializeOWO();
-        }        
+        }
 
         public void LOG(string logStr)
         {
@@ -72,21 +77,21 @@ namespace OWO_Subnautica
         {
             LOG("Initializing OWO skin");
 
-            var gameAuth = GameAuth.Create(AllBakedSensations()).WithId("26202665");
+            var gameAuth = GameAuth.Create(AllBakedSensations()).WithId("0");
 
             OWO.Configure(gameAuth);
-            string[] myIPs = getIPsFromFile("OWO_Manual_IP.txt");
+            string[] myIPs = GetIPsFromFile("OWO_Manual_IP.txt");
             if (myIPs.Length == 0) await OWO.AutoConnect();
             else
             {
                 await OWO.Connect(myIPs);
             }
 
-            if (OWO.ConnectionState == ConnectionState.Connected)
+            if (OWO.ConnectionState == OWOGame.ConnectionState.Connected)
             {
                 suitDisabled = false;
                 LOG("OWO suit connected.");
-                Feel("Heartbeat", 0);
+                Feel("Heartbeat");
             }
             if (suitDisabled) LOG("OWO is not enabled?!?!");
         }
@@ -111,7 +116,7 @@ namespace OWO_Subnautica
             return result.ToArray();
         }
 
-        public string[] getIPsFromFile(string filename)
+        public string[] GetIPsFromFile(string filename)
         {
             List<string> ips = new List<string>();
             string filePath = Directory.GetCurrentDirectory() + "\\BepinEx\\Plugins\\OWO" + filename;
@@ -121,8 +126,7 @@ namespace OWO_Subnautica
                 var lines = File.ReadLines(filePath);
                 foreach (var line in lines)
                 {
-                    IPAddress address;
-                    if (IPAddress.TryParse(line, out address)) ips.Add(line);
+                    if (IPAddress.TryParse(line, out _)) ips.Add(line);
                     else LOG("IP not valid? ---" + line + "---");
                 }
             }
@@ -197,7 +201,7 @@ namespace OWO_Subnautica
         {
             while (teleportIsActive)
             {
-                Feel("Teleport", 0);                
+                Feel("Teleport", 0);
                 await Task.Delay(1000);
             }
         }
@@ -349,35 +353,35 @@ namespace OWO_Subnautica
         public void StopAllHapticFeedback()
         {
             StopHeartBeat();
-            StopSwimming();  
+            StopSwimming();
             StopDrilling(true);
             StopDrilling(false);
             StopLowFood();
             StopLowOxygen();
             StopLowWater();
-            StopTeleport();            
+            StopTeleport();
 
             OWO.Stop();
         }
 
-        public void PlayBackHit(String key, float myRotation)
-        {
-            Sensation hitSensation = Sensation.Parse("100,3,76,0,200,0,Impact");
+        //public void PlayBackHit(String key, float myRotation)
+        //{
+        //    Sensation hitSensation = Sensation.Parse("100,3,76,0,200,0,Impact");
 
-            if (myRotation >= 0 && myRotation <= 180)
-            {
-                if (myRotation >= 0 && myRotation <= 90) hitSensation = hitSensation.WithMuscles(Muscle.Dorsal_L, Muscle.Lumbar_L);
-                else hitSensation = hitSensation.WithMuscles(Muscle.Dorsal_R, Muscle.Lumbar_R);
-            }
-            else
-            {
-                if (myRotation >= 270 && myRotation <= 359) hitSensation = hitSensation.WithMuscles(Muscle.Pectoral_L, Muscle.Abdominal_L);
-                else hitSensation.WithMuscles(Muscle.Pectoral_R, Muscle.Abdominal_R);
-            }
+        //    if (myRotation >= 0 && myRotation <= 180)
+        //    {
+        //        if (myRotation >= 0 && myRotation <= 90) hitSensation = hitSensation.WithMuscles(Muscle.Dorsal_L, Muscle.Lumbar_L);
+        //        else hitSensation = hitSensation.WithMuscles(Muscle.Dorsal_R, Muscle.Lumbar_R);
+        //    }
+        //    else
+        //    {
+        //        if (myRotation >= 270 && myRotation <= 359) hitSensation = hitSensation.WithMuscles(Muscle.Pectoral_L, Muscle.Abdominal_L);
+        //        else hitSensation.WithMuscles(Muscle.Pectoral_R, Muscle.Abdominal_R);
+        //    }
 
-            if (suitDisabled) { return; }
-            OWO.Send(hitSensation.WithPriority(3));
-        }
+        //    if (suitDisabled) { return; }
+        //    OWO.Send(hitSensation.WithPriority(3));
+        //}
 
         internal void FallSensation(float speed)
         {
