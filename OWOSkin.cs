@@ -159,7 +159,7 @@ namespace OWO_Subnautica
         {
             while (heartBeatIsActive && heartbeatCount <= 25)
             {
-                Feel("Heartbeat", 0);
+                Feel("Heartbeat", 1);
                 heartbeatCount++;
                 await Task.Delay(1000);
             }
@@ -169,7 +169,7 @@ namespace OWO_Subnautica
         {
             while (lowOxygenIsActive && LowOxygenCount <= 25)
             {
-                Feel("Low Oxygen", 0);
+                Feel("Low Oxygen", 1);
                 LowOxygenCount++;
                 await Task.Delay(1000);
             }
@@ -179,7 +179,7 @@ namespace OWO_Subnautica
         {
             while (lowFoodIsActive && LowFoodCount <= 25)
             {
-                Feel("Low Food", 0);
+                Feel("Low Food", 1);
                 LowFoodCount++;
                 await Task.Delay(1000);
             }
@@ -189,7 +189,7 @@ namespace OWO_Subnautica
         {
             while (lowWaterIsActive && LowWaterCount <= 25)
             {
-                Feel("Low Water", 0);
+                Feel("Low Water", 1);
                 LowWaterCount++;
                 await Task.Delay(1000);
             }
@@ -199,7 +199,7 @@ namespace OWO_Subnautica
         {
             while (teleportIsActive)
             {
-                Feel("Teleport", 0);
+                Feel("Teleport", 1);
                 await Task.Delay(1000);
             }
         }
