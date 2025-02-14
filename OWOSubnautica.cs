@@ -51,8 +51,6 @@ namespace OWO_Subnautica
         [HarmonyPatch(typeof(Player), "LateUpdate")]
         public class OnSwimming
         {
-            public static float lastHealth = 100;
-
             [HarmonyPostfix]
             public static void Postfix(Player __instance)
             {                
@@ -75,13 +73,6 @@ namespace OWO_Subnautica
                 {
                     owoSkin.StopSwimming();
                 }
-
-                if (__instance.liveMixin.health > lastHealth)
-                {
-                    owoSkin.Feel("Heal");
-                }
-
-                lastHealth = __instance.liveMixin.health;
             }
         }
 
@@ -660,7 +651,7 @@ namespace OWO_Subnautica
                 if (CantFeel()) return;
 
                 owoSkin.StopHeartBeat();
-                //owoSkin.Feel("Heal");
+                owoSkin.Feel("Heal");
             }
         }
 
@@ -674,6 +665,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
                 owoSkin.StopAllHapticFeedback();
+                playerHasSpawned = false;
             }
         }
 
@@ -685,6 +677,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
                 owoSkin.StopAllHapticFeedback();
+                playerHasSpawned = false;
             }
         }
     }
