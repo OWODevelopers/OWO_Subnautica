@@ -263,6 +263,8 @@ namespace OWO_Subnautica
 
         public void StartLowOxygen()
         {
+            if (lowOxygenIsActive) return;
+
             lowOxygenIsActive = true;
             LowOxygenFuncAsync();
         }
@@ -275,6 +277,8 @@ namespace OWO_Subnautica
 
         public void StartLowFood()
         {
+            if (lowFoodIsActive) return;
+
             lowFoodIsActive = true;
             LowFoodFuncAsync();
         }
@@ -287,6 +291,8 @@ namespace OWO_Subnautica
 
         public void StartLowWater()
         {
+            if (lowWaterIsActive) return;
+
             lowWaterIsActive = true;
             LowWaterFuncAsync();
         }
