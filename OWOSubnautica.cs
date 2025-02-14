@@ -420,14 +420,14 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
 
-                double timeLastJumped = (double)(Traverse.Create(__instance).Field("timeLastJumped").GetValue<float>() + 1.0);
+                //double timeLastJumped = (double)(Traverse.Create(__instance).Field("timeLastJumped").GetValue<float>() + 1.0);
 
-                Log.LogWarning("JUMP " + grounded + " " + timeLastJumped + " " + (double)Time.time);
+                //Log.LogWarning("JUMP " + grounded + " " + timeLastJumped + " " + (double)Time.time);
 
-                if (grounded && timeLastJumped <= (double)Time.time)
-                {
-                    owoSkin.Feel("Jump Landing");
-                }
+                //if (grounded && timeLastJumped <= (double)Time.time)
+                //{
+                //    owoSkin.Feel("Jump Landing");
+                //}
 
                 if (grounded != Traverse.Create(__instance).Field("onGround").GetValue<bool>())
                 {
