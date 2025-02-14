@@ -5,6 +5,7 @@ using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static VFXParticlesPool;
 
 namespace OWO_Subnautica
 {
@@ -404,19 +405,21 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
 
-                owoSkin.Feel("Jump Landing");
+                Log.LogWarning("Acabo de aterrizar sobre la tierra");
+                owoSkin.Feel("Exosuit Landing");
             }
         }
 
         [HarmonyPatch(typeof(Exosuit), "ApplyJumpForce")]
         public class OnExosuitJumping
         {
+            static bool grounded = false;
+
             [HarmonyPrefix]
             public static void Prefix(Exosuit __instance)
             {
                 if (CantFeel()) return;
 
-                bool grounded = Traverse.Create(__instance).Field("onGround").GetValue<bool>();
                 double timeLastJumped = (double)(Traverse.Create(__instance).Field("timeLastJumped").GetValue<float>() + 1.0);
 
                 Log.LogWarning("JUMP " + grounded + " " + timeLastJumped + " " + (double)Time.time);
@@ -425,6 +428,24 @@ namespace OWO_Subnautica
                 {
                     owoSkin.Feel("Jump Landing");
                 }
+
+                if (grounded != Traverse.Create(__instance).Field("onGround").GetValue<bool>())
+                {
+                    Log.LogWarning("Presaltando");
+                    owoSkin.Feel("Exosuit Pre Jump");
+                }
+
+                grounded = Traverse.Create(__instance).Field("onGround").GetValue<bool>();
+            }
+
+            public static void Postfix(Exosuit __instance) {
+                if (grounded != Traverse.Create(__instance).Field("onGround").GetValue<bool>())
+                {
+                    Log.LogWarning("Acabo de saltar");
+                    owoSkin.Feel("Exosuit Jump");
+                }
+
+                grounded = Traverse.Create(__instance).Field("onGround").GetValue<bool>();
             }
         }
 
