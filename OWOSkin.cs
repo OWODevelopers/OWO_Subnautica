@@ -389,6 +389,5 @@ namespace OWO_Subnautica
 }
 
 /*
-- Pickup Item
 - Drilling
  */

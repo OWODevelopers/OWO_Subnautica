@@ -19,7 +19,7 @@
 18~Enter Water~70,1,50,0,0,0,Launch|9%100,8%100,3%100,2%100&60,1,60,100,0,0,Get In|1%100,0%100,4%100,7%100,6%100,5%100~interaction-1~Interactions#
 19~Exit Water~60,1,60,0,100,0,Leave|0%100,1%100,4%71,7%100,6%100,5%70&50,1,38,0,0,0,Get Up|3%100,2%100,8%100,9%100~interaction-1~Interactions#
 20~Eating~30,2,40,200,0,0,Hit|1%100,0%100&30,1,40,0,0,0,Hit|3%100,2%100,0%100,1%100&30,2,40,0,200,0,Hit|3%100,2%100~default~Interactions#
-21~Pickup Itemt~11,1,80,0,0,0,Hit|4%100&45,1,60,0,100,0,Store|4%100,7%100,6%100~reward-1~Interactions#
+21~Pickup Item~11,1,80,0,0,0,Hit|4%100&45,1,60,0,100,0,Store|4%100,7%100,6%100~reward-1~Interactions#
 22~Grab Object~11,1,80,0,0,0,Hit|4%100~reward-1~Interactions#
 23~Teleport~55,2,70,200,0,0,Landing|3%100,2%100,9%100,8%100&55,1,70,0,0,0,Landing|0%100,7%100,6%100,1%100~magic-2~Interactions#
 24~Recoil L~11,1,70,0,0,0,|5%100~weapon-2~Weapons#
