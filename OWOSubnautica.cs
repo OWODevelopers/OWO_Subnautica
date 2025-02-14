@@ -16,6 +16,7 @@ namespace OWO_Subnautica
 #pragma warning restore CS0109
         public static OWOSkin owoSkin;
         public static ConfigEntry<bool> swimmingEffects;
+        public static bool playerHasSpawned = false;
         public static List<TechType> oneShotTypes = new List<TechType>();
 
         private void Awake()
@@ -27,6 +28,12 @@ namespace OWO_Subnautica
             var harmony = new Harmony("owo.patch.subnautica");
             harmony.PatchAll();
         }
+
+        public static bool CantFeel()
+        {
+            return owoSkin.suitDisabled || !playerHasSpawned;
+        }
+
         #region Actions
 
         [HarmonyPatch(typeof(Inventory), "OnAddItem")]
@@ -35,10 +42,8 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled)
-                {
-                    return;
-                }
+                if (CantFeel()) return;
+                
                 owoSkin.Feel("Pickup Item");
             }
         }
@@ -46,13 +51,15 @@ namespace OWO_Subnautica
         [HarmonyPatch(typeof(Player), "LateUpdate")]
         public class OnSwimming
         {
+            public static float lastHealth = 100;
+
             [HarmonyPostfix]
             public static void Postfix(Player __instance)
-            {
-                if (owoSkin.suitDisabled)
-                {
-                    return;
-                }
+            {                
+                if (__instance.IsAlive() && __instance.movementSpeed > .1) playerHasSpawned = true;
+
+                if (CantFeel()) return;
+
                 if (__instance.isUnderwaterForSwimming.value && __instance.movementSpeed > 0)
                 {
                     owoSkin.LOG($"Swimming speed: {__instance.movementSpeed}");
@@ -68,6 +75,13 @@ namespace OWO_Subnautica
                 {
                     owoSkin.StopSwimming();
                 }
+
+                if (__instance.liveMixin.health > lastHealth)
+                {
+                    owoSkin.Feel("Heal");
+                }
+
+                lastHealth = __instance.liveMixin.health;
             }
         }
 
@@ -77,7 +91,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.StartTeleport();
             }
@@ -89,7 +103,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.StopTeleport();
             }
@@ -103,7 +117,7 @@ namespace OWO_Subnautica
             [HarmonyPrefix]
             public static void Prefix(Player __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 isUnderwaterForSwimming = __instance.isUnderwaterForSwimming.value;
             }
@@ -111,7 +125,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(Player __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 if (__instance.isUnderwaterForSwimming.value != isUnderwaterForSwimming)
                 {
@@ -132,10 +146,8 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(bool __result)
             {
-                if (owoSkin.suitDisabled || !__result)
-                {
-                    return;
-                }
+                if (CantFeel() || !__result) return;
+
                 owoSkin.Feel("Knife Attack");
             }
         }
@@ -146,10 +158,8 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled)
-                {
-                    return;
-                }
+                if (CantFeel()) return;
+
                 owoSkin.Feel("Recoil R");
             }
         }
@@ -160,7 +170,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(bool __result)
             {
-                if (owoSkin.suitDisabled || !__result) return;
+                if (CantFeel() || !__result) return;
 
                 owoSkin.Feel("Scanning");
             }
@@ -171,7 +181,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(bool __result)
             {
-                if (owoSkin.suitDisabled || !__result) return;
+                if (CantFeel() || !__result) return;
 
                 owoSkin.Feel("Air Bladder");
             }
@@ -183,7 +193,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.StartDrilling(true);
             }
@@ -196,7 +206,7 @@ namespace OWO_Subnautica
         //    [HarmonyPostfix]
         //    public static void Postfix()
         //    {
-        //        if (owoSkin.suitDisabled) return;
+        //        if (CantFeel()) return;
 
         //        owoSkin.StartDrilling(true);
         //    }
@@ -208,7 +218,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.StopDrilling(true);
             }
@@ -220,7 +230,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.StartDrilling(true);
             }
@@ -232,7 +242,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.StopDrilling(true);
             }
@@ -256,7 +266,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(bool __result)
             {
-                if (owoSkin.suitDisabled || !__result) return;
+                if (CantFeel() || !__result) return;
 
                 owoSkin.Feel("Constructor");
             }
@@ -267,7 +277,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.Feel("Grab Object");
             }
@@ -279,7 +289,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.Feel("Cannon Shot");
             }
@@ -291,7 +301,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(bool __result)
             {
-                if (owoSkin.suitDisabled || !__result) return;
+                if (CantFeel() || !__result) return;
 
                 owoSkin.Feel("Statis Charging");
             }
@@ -307,7 +317,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.Feel("Vehicle Impact");
             }
@@ -319,7 +329,7 @@ namespace OWO_Subnautica
             [HarmonyPrefix]
             public static void Prefix(CyclopsEngineChangeState __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 if (!__instance.motorMode.engineOn)
                 {
@@ -335,7 +345,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.Feel("Splash");
             }
@@ -349,7 +359,7 @@ namespace OWO_Subnautica
             [HarmonyPrefix]
             public static void Prefix(uGUI_SeamothHUD __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 health = Traverse.Create(__instance).Field("lastHealth").GetValue<int>();
             }
@@ -357,7 +367,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(uGUI_SeamothHUD __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 if (health > Traverse.Create(__instance).Field("lastHealth").GetValue<int>())
                 {
@@ -376,7 +386,7 @@ namespace OWO_Subnautica
             [HarmonyPrefix]
             public static void Prefix(uGUI_ExosuitHUD __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 health = Traverse.Create(__instance).Field("lastHealth").GetValue<int>();
             }
@@ -384,7 +394,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(uGUI_ExosuitHUD __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 if (health != Traverse.Create(__instance).Field("lastHealth").GetValue<int>())
                 {
@@ -401,7 +411,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.Feel("Jump Landing");
             }
@@ -413,7 +423,7 @@ namespace OWO_Subnautica
             [HarmonyPrefix]
             public static void Prefix(Exosuit __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 bool grounded = Traverse.Create(__instance).Field("onGround").GetValue<bool>();
                 double timeLastJumped = (double)(Traverse.Create(__instance).Field("timeLastJumped").GetValue<float>() + 1.0);
@@ -433,7 +443,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(Exosuit __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 if (__instance.mainAnimator.GetBool("use_tool_left"))
                 {
@@ -456,7 +466,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(Exosuit __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 TechType type = Traverse.Create(__instance).Field("currentLeftArmType").GetValue<TechType>();
 
@@ -473,7 +483,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(Exosuit __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 if (__instance.mainAnimator.GetBool("use_tool_right"))
                 {
@@ -498,7 +508,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(Exosuit __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 TechType type = Traverse.Create(__instance).Field("currentRightArmType").GetValue<TechType>();
 
@@ -519,10 +529,11 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.StopAllHapticFeedback();
                 owoSkin.Feel("Death", 4);
+                playerHasSpawned = false;
             }
         }
 
@@ -532,9 +543,8 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
-                //Plugin.owoSkin.Feel("Impact", true, 2f);
                 owoSkin.Feel("Impact");
             }
         }
@@ -545,7 +555,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(uGUI_OxygenBar __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 float pulseDelay = Traverse.Create(__instance).Field("pulseDelay").GetValue<float>();
                 if (pulseDelay >= 2 || !Utils.GetLocalPlayerComp().isUnderwaterForSwimming.value)
@@ -566,7 +576,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(uGUI_WaterBar __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 float pulseDelay = Traverse.Create(__instance).Field("pulseDelay").GetValue<float>();
                 if (pulseDelay <= 0.85f)
@@ -583,7 +593,8 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                playerHasSpawned = true;
+                if (CantFeel()) return;
 
                 owoSkin.StopLowWater();
                 owoSkin.Feel("Eating");
@@ -596,7 +607,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(uGUI_FoodBar __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 float pulseDelay = Traverse.Create(__instance).Field("pulseDelay").GetValue<float>();
                 if (pulseDelay <= 0.85f)
@@ -613,10 +624,13 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                playerHasSpawned = true;
+                if (CantFeel()) return;
 
                 owoSkin.StopLowFood();
+                owoSkin.LOG($"Eating - {DateTime.UtcNow}");
                 owoSkin.Feel("Eating");
+                owoSkin.LOG("Finish Eating");
             }
         }
 
@@ -626,7 +640,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix(uGUI_HealthBar __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 float pulseDelay = Traverse.Create(__instance).Field("pulseDelay").GetValue<float>();
                 if (pulseDelay <= 1.85f)
@@ -641,12 +655,12 @@ namespace OWO_Subnautica
         public class OnLowHealthStop
         {
             [HarmonyPostfix]
-            public static void Postfix()
+            public static void Postfix(uGUI_HealthBar __instance)
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
 
                 owoSkin.StopHeartBeat();
-                owoSkin.Feel("Heal");
+                //owoSkin.Feel("Heal");
             }
         }
 
@@ -658,7 +672,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
                 owoSkin.StopAllHapticFeedback();
             }
         }
@@ -669,7 +683,7 @@ namespace OWO_Subnautica
             [HarmonyPostfix]
             public static void Postfix()
             {
-                if (owoSkin.suitDisabled) return;
+                if (CantFeel()) return;
                 owoSkin.StopAllHapticFeedback();
             }
         }
