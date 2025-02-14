@@ -56,11 +56,8 @@ namespace OWO_Subnautica
                 if (__instance.isUnderwaterForSwimming.value && __instance.movementSpeed > 0)
                 {
                     owoSkin.LOG($"Swimming speed: {__instance.movementSpeed}");
-                    //start thread
                     owoSkin.StartSwimming();
-                    //is seaglide equipped ?
                     owoSkin.seaGlideEquipped = __instance.motorMode == Player.MotorMode.Seaglide;
-                    //calculate delay and intensity
                     int delay = (int)((30 - Math.Truncate(__instance.movementSpeed * 10)) * 100);
                     owoSkin.SwimmingDelay = (delay > 0) ? (delay < 3000) ? delay : 3000 : 1000;
 
@@ -538,7 +535,7 @@ namespace OWO_Subnautica
                 if (owoSkin.suitDisabled) return;
 
                 //Plugin.owoSkin.Feel("Impact", true, 2f);
-                owoSkin.Feel("impact");
+                owoSkin.Feel("Impact");
             }
         }
 
