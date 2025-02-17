@@ -8,25 +8,25 @@
 7~Swimming~100,2,10,200,0,0,Stroke|1%100,7%100,8%100,9%100,3%100,2%100&100,2,10,200,0,6,Long Stroke|0%100,2%100,3%100,6%100,9%100,8%100~interaction-3~Interactions#
 8~Jump Landing~40,2,63,0,0,0,Land|9%100,8%100,2%100,3%100~environment-5~Interactions#
 9~Enter Water~70,1,50,0,0,0,Launch|9%100,8%100,3%100,2%100&60,1,60,100,0,0,Get In|1%100,0%100,4%100,7%100,6%100,5%100~interaction-1~Interactions#
-10~Exit Water~60,1,60,0,100,0,Leave|0%100,1%100,4%71,7%100,6%100,5%70&50,1,38,0,0,0,Get Up|3%100,2%100,8%100,9%100~interaction-1~Interactions#
+10~Exit Water~60,1,40,0,100,0,Leave|0%100,1%100,4%71,7%100,6%100,5%70&50,1,38,0,0,0,Get Up|3%100,2%100,8%100,9%100~interaction-1~Interactions#
 11~Eating~30,2,40,200,0,0,Hit|1%100,0%100&30,1,40,0,0,0,Hit|3%100,2%100,0%100,1%100&30,2,40,0,200,0,Hit|3%100,2%100~default~Interactions#
-12~Pickup Item~11,1,80,0,0,0,Hit|4%100&45,1,60,0,100,0,Store|4%100,7%100,6%100~reward-1~Interactions#
-13~Grab Object~11,1,80,0,0,0,Hit|4%100~reward-1~Interactions#
+12~Pickup Item~11,1,40,0,0,0,Hit|4%100&45,1,40,0,100,0,Store|4%100,7%100,6%100~reward-1~Interactions#
+13~Grab Object~11,1,50,0,0,0,Hit|4%100~reward-1~Interactions#
 14~Teleport~55,2,70,200,0,0,Landing|3%100,2%100,9%100,8%100&55,1,70,0,0,0,Landing|0%100,7%100,6%100,1%100~magic-2~Interactions#
 15~Air Bladder~71,2,30,0,100,0,Hit|0%60,5%60,1%60,4%60~interaction-2~Interactions#
 16~Builder~100,2,40,100,100,0,Hit|4%100~interaction-3~Interactions#
 17~Constructor~100,2,50,100,100,0,Hit|4%100~interaction-1~Interactions#
-18~Splash~8,4,70,100,100,0,Soggy|0%100,3%100,2%100,1%100,7%100,6%100,8%100,9%100~environment-5~Interactions#
+18~Splash~8,4,65,100,100,0,Soggy|0%100,3%100,2%100,1%100,7%100,6%100,8%100,9%100~environment-5~Interactions#
 19~Scanning~100,2,30,100,100,0,Start|4%100~interaction-4~Interactions#
-20~Exosuit Pre Jump~40,2,49,0,0,0,Tremble|0%100,3%100,2%100,9%100,8%100,7%100,6%100,1%100~environment-5~Interactions#
-21~Exosuit Jump~100,2,90,0,200,0,Hit|2%80,3%80,9%100,8%100,6%100,7%100~environment-5~Interactions#
+20~Exosuit Pre Jump~40,2,40,0,0,0,Tremble|0%100,3%100,2%100,9%100,8%100,7%100,6%100,1%100~environment-5~Interactions#
+21~Exosuit Jump~100,2,40,0,200,0,Hit|2%80,3%80,9%100,8%100,6%100,7%100~environment-5~Interactions#
 22~Exosuit Landing~100,2,50,0,0,0,Hit|3%100,2%100,9%100,8%100&100,1,50,0,0,0,Hit|0%100,2%100,3%100,1%100,7%100,6%100,8%100,9%100~environment-5~Interactions#
-23~Recoil L~11,1,70,0,0,0,Hit|5%100~weapon-2~Weapons#
-24~Recoil R~11,1,70,0,0,0,Hit|4%100~weapon-2~Weapons#
-25~Cannon Shot~100,2,80,0,100,0,Hit|4%90,5%60~weapon-2~Weapons#
-26~Statis Charging~20,20,61,0,0,0,Tremble|0%100,4%100~weapon-2~Weapons#
-27~Knife Attack~100,1,90,0,0,0,Hit|0%53,4%100~weapon-1~Melee#
-28~Death~40,11,80,0,900,0,Hit|0%100,1%100,3%100,2%100,7%100,9%100,8%100,6%100~health-3~Health#
-29~Heal~100,2,65,200,0,0,Hit|3%100,2%100,9%100,8%100&70,1,65,0,0,0,Hit|3%41,2%43,9%44,8%48,6%100,7%100,1%100,0%100&70,2,65,0,200,0,Hit|1%100,0%100,6%100,7%100~health-2~Health#
-30~Drilling L~29,3,70,0,0,0,Hit|1%100,5%100~weapon-0~Interactions#
-31~Drilling R~30,3,70,0,0,0,Hit|0%100,4%100~weapon-0~Interactions
+23~Drilling L~29,3,70,0,0,0,Hit|1%100,5%100~weapon-0~Interactions#
+24~Drilling R~30,3,70,0,0,0,Hit|0%100,4%100~weapon-0~Interactions#
+25~Recoil L~11,1,55,0,0,0,Hit|5%100~weapon-2~Weapons#
+26~Recoil R~11,1,55,0,0,0,Hit|4%100~weapon-2~Weapons#
+27~Cannon Shot~100,2,80,0,100,0,Hit|4%90,5%60~weapon-2~Weapons#
+28~Statis Charging~20,20,61,0,0,0,Tremble|0%100,4%100~weapon-2~Weapons#
+29~Knife Attack~100,1,55,0,0,0,Hit|0%53,4%100~weapon-1~Melee#
+30~Death~40,11,80,0,900,0,Hit|0%100,1%100,3%100,2%100,7%100,9%100,8%100,6%100~health-3~Health#
+31~Heal~100,2,45,200,0,0,Hit|3%100,2%100,9%100,8%100&70,1,45,0,0,0,Hit|3%41,2%43,9%44,8%48,6%100,7%100,1%100,0%100&70,2,45,0,200,0,Hit|1%100,0%100,6%100,7%100~health-2~Health
