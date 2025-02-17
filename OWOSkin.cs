@@ -77,7 +77,7 @@ namespace OWO_Subnautica
         {
             LOG("Initializing OWO skin");
 
-            var gameAuth = GameAuth.Create(AllBakedSensations()).WithId("3638590");
+            var gameAuth = GameAuth.Create(AllBakedSensations()).WithId("38940112");
 
             OWO.Configure(gameAuth);
             string[] myIPs = GetIPsFromFile("OWO_Manual_IP.txt");

@@ -8,8 +8,37 @@ This mod is based on the work of [Asienth](https://github.com/Astienth/7Days_bHa
 - Extract the mod zip and place all files and the owo folder into the BepInEx\Plugins directory of your game installation.
 - Enjoy your inmersive experience! 😊
 
-# Featured effects
-TBA
+# Featured effect
+- Air Bladder
+- Builder
+- Cannon Shot
+- Constructor
+- Death
+- Eating
+- Enter Water
+- Exit Water
+- Exosuit Impact
+- Exosuit Jump
+- Exosuit Landing
+- Exosuit Pre Jump
+- Grab Object
+- Heal
+- Heartbeat
+- Impact
+- Jump Landing
+- Knife Attack
+- Low Food
+- Low Oxygen
+- Low Water
+- Pickup Item
+- Recoil
+- Scanning
+- Splash
+- Statis Charging
+- Swimming
+- Teleport
+- Vehicle Impact
+- Drilling
 
 # Manual Connection
 If you are having trouble with the automatic connection, create a .txt file called OWO_Manual_IP.txt  
