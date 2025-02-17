@@ -159,7 +159,7 @@ namespace OWO_Subnautica
         {
             while (heartBeatIsActive && heartbeatCount <= 25)
             {
-                Feel("Heartbeat", 1);
+                Feel("Heartbeat", 0);
                 heartbeatCount++;
                 await Task.Delay(1000);
             }
@@ -199,7 +199,7 @@ namespace OWO_Subnautica
         {
             while (teleportIsActive)
             {
-                Feel("Teleport", 1);
+                Feel("Teleport", 2);
                 await Task.Delay(1000);
             }
         }
@@ -393,7 +393,3 @@ namespace OWO_Subnautica
         }
     }
 }
-
-/*
-- Drilling
- */

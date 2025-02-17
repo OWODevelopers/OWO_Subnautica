@@ -45,7 +45,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
                 
-                owoSkin.Feel("Pickup Item");
+                owoSkin.Feel("Pickup Item", 2);
             }
         }
 
@@ -121,7 +121,7 @@ namespace OWO_Subnautica
 
                 if (__instance.isUnderwaterForSwimming.value != isUnderwaterForSwimming)
                 {
-                    owoSkin.Feel((!isUnderwaterForSwimming) ? "Enter Water" : "Exit Water");
+                    owoSkin.Feel((!isUnderwaterForSwimming) ? "Enter Water" : "Exit Water", 2);
                 }
 
                 isUnderwaterForSwimming = __instance.isUnderwaterForSwimming.value;
@@ -140,7 +140,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel() || !__result) return;
 
-                owoSkin.Feel("Knife Attack");
+                owoSkin.Feel("Knife Attack", 3);
             }
         }
 
@@ -152,7 +152,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
 
-                owoSkin.Feel("Recoil R");
+                owoSkin.Feel("Recoil R", 3);
             }
         }
 
@@ -164,7 +164,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel() || !__result) return;
 
-                owoSkin.Feel("Scanning");
+                owoSkin.Feel("Scanning", 2);
             }
         }
         [HarmonyPatch(typeof(AirBladder), "OnRightHandDown")]
@@ -175,7 +175,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel() || !__result) return;
 
-                owoSkin.Feel("Air Bladder");
+                owoSkin.Feel("Air Bladder", 3);
             }
         }
         
@@ -248,7 +248,7 @@ namespace OWO_Subnautica
             {
                 if (owoSkin.suitDisabled || !__result) return;
 
-                owoSkin.Feel("Builder");
+                owoSkin.Feel("Builder", 2);
             }
         }
 
@@ -260,7 +260,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel() || !__result) return;
 
-                owoSkin.Feel("Constructor");
+                owoSkin.Feel("Constructor", 2);
             }
         }
         [HarmonyPatch(typeof(PropulsionCannon), "GrabObject")]
@@ -271,7 +271,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
 
-                owoSkin.Feel("Grab Object");
+                owoSkin.Feel("Grab Object",2);
             }
         }
 
@@ -283,7 +283,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
 
-                owoSkin.Feel("Cannon Shot");
+                owoSkin.Feel("Cannon Shot",3);
             }
         }
 
@@ -295,7 +295,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel() || !__result) return;
 
-                owoSkin.Feel("Statis Charging");
+                owoSkin.Feel("Statis Charging", 2);
             }
         }
 
@@ -311,7 +311,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
 
-                owoSkin.Feel("Vehicle Impact");
+                owoSkin.Feel("Vehicle Impact",3);
             }
         }
 
@@ -325,7 +325,7 @@ namespace OWO_Subnautica
 
                 if (!__instance.motorMode.engineOn)
                 {
-                    owoSkin.Feel("Jump Landing");
+                    owoSkin.Feel("Jump Landing", 2);
                     //Plugin.owoSkin.Feel("LandAfterJump", true, 1f, 4f);
                 }
             }
@@ -339,7 +339,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
 
-                owoSkin.Feel("Splash");
+                owoSkin.Feel("Splash", 1);
             }
         }
 
@@ -363,7 +363,7 @@ namespace OWO_Subnautica
 
                 if (health > Traverse.Create(__instance).Field("lastHealth").GetValue<int>())
                 {
-                    owoSkin.Feel("Vehicle Impact");
+                    owoSkin.Feel("Vehicle Impact", 3);
 
                     health = Traverse.Create(__instance).Field("lastHealth").GetValue<int>();
                 }
@@ -390,7 +390,7 @@ namespace OWO_Subnautica
 
                 if (health != Traverse.Create(__instance).Field("lastHealth").GetValue<int>())
                 {
-                    owoSkin.Feel("Exosuit Impact");
+                    owoSkin.Feel("Exosuit Impact", 3);
 
                     health = Traverse.Create(__instance).Field("lastHealth").GetValue<int>();
                 }
@@ -406,7 +406,7 @@ namespace OWO_Subnautica
                 if (CantFeel()) return;
 
                 Log.LogWarning("Acabo de aterrizar sobre la tierra");
-                owoSkin.Feel("Exosuit Landing");
+                owoSkin.Feel("Exosuit Landing", 2);
             }
         }
 
@@ -432,7 +432,7 @@ namespace OWO_Subnautica
                 if (grounded != Traverse.Create(__instance).Field("onGround").GetValue<bool>())
                 {
                     Log.LogWarning("Presaltando");
-                    owoSkin.Feel("Exosuit Pre Jump");
+                    owoSkin.Feel("Exosuit Pre Jump", 2);
                 }
 
                 grounded = Traverse.Create(__instance).Field("onGround").GetValue<bool>();
@@ -442,7 +442,7 @@ namespace OWO_Subnautica
                 if (grounded != Traverse.Create(__instance).Field("onGround").GetValue<bool>())
                 {
                     Log.LogWarning("Acabo de saltar");
-                    owoSkin.Feel("Exosuit Jump");
+                    owoSkin.Feel("Exosuit Jump", 2);
                 }
 
                 grounded = Traverse.Create(__instance).Field("onGround").GetValue<bool>();
@@ -462,7 +462,7 @@ namespace OWO_Subnautica
                     TechType type = Traverse.Create(__instance).Field("currentLeftArmType").GetValue<TechType>();
                     if (oneShotTypes.Contains(type))
                     {
-                        owoSkin.Feel("Recoil L");
+                        owoSkin.Feel("Recoil L",3);
                     }
                     if (type == TechType.ExosuitDrillArmModule)
                     {
@@ -503,7 +503,7 @@ namespace OWO_Subnautica
 
                     if (oneShotTypes.Contains(type))
                     {
-                        owoSkin.Feel("Recoil R");
+                        owoSkin.Feel("Recoil R", 3);
                     }
 
                     if (type == TechType.ExosuitDrillArmModule)
@@ -557,7 +557,7 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
 
-                owoSkin.Feel("Impact");
+                owoSkin.Feel("Impact", 3);
             }
         }
 
@@ -609,7 +609,7 @@ namespace OWO_Subnautica
                 if (CantFeel()) return;
 
                 owoSkin.StopLowWater();
-                owoSkin.Feel("Eating");
+                owoSkin.Feel("Eating", 2);
             }
         }
 
@@ -641,7 +641,7 @@ namespace OWO_Subnautica
 
                 owoSkin.StopLowFood();
                 owoSkin.LOG($"Eating - {DateTime.UtcNow}");
-                owoSkin.Feel("Eating");
+                owoSkin.Feel("Eating", 2);
                 owoSkin.LOG("Finish Eating");
             }
         }
@@ -672,7 +672,7 @@ namespace OWO_Subnautica
                 if (CantFeel()) return;
 
                 owoSkin.StopHeartBeat();
-                owoSkin.Feel("Heal");
+                owoSkin.Feel("Heal", 1);
             }
         }
 
