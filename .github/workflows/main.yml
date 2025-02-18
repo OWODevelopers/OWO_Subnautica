@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish:
+    runs-on: window-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Configurar .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '4.8'
+
+      - name: Restaurar dependencias
+        run: dotnet restore
+
+      - name: Compilar la biblioteca
+        run: dotnet build --configuration Release
