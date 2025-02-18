@@ -21,8 +21,8 @@
 20~Exosuit Pre Jump~40,2,40,0,0,0,Tremble|0%100,3%100,2%100,9%100,8%100,7%100,6%100,1%100~environment-5~Interactions#
 21~Exosuit Jump~100,2,40,0,200,0,Hit|2%80,3%80,9%100,8%100,6%100,7%100~environment-5~Interactions#
 22~Exosuit Landing~100,2,50,0,0,0,Hit|3%100,2%100,9%100,8%100&100,1,50,0,0,0,Hit|0%100,2%100,3%100,1%100,7%100,6%100,8%100,9%100~environment-5~Interactions#
-23~Drilling L~29,3,70,0,0,0,Hit|1%100,5%100~weapon-0~Interactions#
-24~Drilling R~30,3,70,0,0,0,Hit|0%100,4%100~weapon-0~Interactions#
+23~Drilling L~29,20,50,0,0,0,Hit|1%100,5%100~weapon-0~Interactions#
+24~Drilling R~40,20,50,0,0,0,Hit|0%100,4%100~weapon-0~Interactions#
 25~Recoil L~11,1,55,0,0,0,Hit|5%100~weapon-2~Weapons#
 26~Recoil R~11,1,55,0,0,0,Hit|4%100~weapon-2~Weapons#
 27~Cannon Shot~100,2,80,0,100,0,Hit|4%90,5%60~weapon-2~Weapons#

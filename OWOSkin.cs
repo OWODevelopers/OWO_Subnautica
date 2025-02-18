@@ -219,7 +219,7 @@ namespace OWO_Subnautica
                     toFeel = "Drilling LR";
 
                 Feel(toFeel, 2);
-                await Task.Delay(1000);
+                await Task.Delay(500);
             }
             drillingIsActive = false;
         }
@@ -352,6 +352,8 @@ namespace OWO_Subnautica
             {
                 drillingLIsActive = false;
             }
+            OWO.Stop();
+
         }
 
         public void StopAllHapticFeedback()

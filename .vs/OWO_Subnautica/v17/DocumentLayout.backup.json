@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\OWO\\Proyectos\\OWO_modSubnautica\\",
+  "WorkspaceRootPath": "C:\\Users\\OWO\\source\\repos\\OWODevelopers\\OWO_Subnautica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9338279A-8F85-4F8B-AA9C-990604F45AB7}|OWO_Subnautica.csproj|c:\\owo\\proyectos\\owo_modsubnautica\\owosubnautica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9338279A-8F85-4F8B-AA9C-990604F45AB7}|OWO_Subnautica.csproj|c:\\users\\owo\\source\\repos\\owodevelopers\\owo_subnautica\\owosubnautica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9338279A-8F85-4F8B-AA9C-990604F45AB7}|OWO_Subnautica.csproj|solutionrelative:owosubnautica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9338279A-8F85-4F8B-AA9C-990604F45AB7}|OWO_Subnautica.csproj|C:\\OWO\\Proyectos\\OWO_modSubnautica\\owoskin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9338279A-8F85-4F8B-AA9C-990604F45AB7}|OWO_Subnautica.csproj|C:\\Users\\OWO\\source\\repos\\OWODevelopers\\OWO_Subnautica\\owoskin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9338279A-8F85-4F8B-AA9C-990604F45AB7}|OWO_Subnautica.csproj|solutionrelative:owoskin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -17,41 +17,41 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 252,
-          "SelectedChildIndex": 2,
+          "DockedHeight": 200,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OWOSkin.cs",
+              "DocumentMoniker": "C:\\Users\\OWO\\source\\repos\\OWODevelopers\\OWO_Subnautica\\OWOSkin.cs",
+              "RelativeDocumentMoniker": "OWOSkin.cs",
+              "ToolTip": "C:\\Users\\OWO\\source\\repos\\OWODevelopers\\OWO_Subnautica\\OWOSkin.cs",
+              "RelativeToolTip": "OWOSkin.cs",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAgwN0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T11:30:34.488Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "OWOSubnautica.cs",
-              "DocumentMoniker": "C:\\OWO\\Proyectos\\OWO_modSubnautica\\OWOSubnautica.cs",
+              "DocumentMoniker": "C:\\Users\\OWO\\source\\repos\\OWODevelopers\\OWO_Subnautica\\OWOSubnautica.cs",
               "RelativeDocumentMoniker": "OWOSubnautica.cs",
-              "ToolTip": "C:\\OWO\\Proyectos\\OWO_modSubnautica\\OWOSubnautica.cs",
+              "ToolTip": "C:\\Users\\OWO\\source\\repos\\OWODevelopers\\OWO_Subnautica\\OWOSubnautica.cs",
               "RelativeToolTip": "OWOSubnautica.cs",
-              "ViewState": "AgIAAJEBAAAAAAAAAAAgwJYBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHkBAAAAAAAAAAAYwIYBAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T10:36:50.713Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OWOSkin.cs",
-              "DocumentMoniker": "C:\\OWO\\Proyectos\\OWO_modSubnautica\\OWOSkin.cs",
-              "RelativeDocumentMoniker": "OWOSkin.cs",
-              "ToolTip": "C:\\OWO\\Proyectos\\OWO_modSubnautica\\OWOSkin.cs",
-              "RelativeToolTip": "OWOSkin.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAADgv8EAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T10:36:45.506Z",
+              "WhenOpened": "2025-02-13T11:30:24.001Z",
               "EditorCaption": ""
             }
           ]

@@ -61,7 +61,7 @@ namespace OWO_Subnautica
 
                 if (__instance.isUnderwaterForSwimming.value && __instance.movementSpeed > 0)
                 {
-                    owoSkin.LOG($"Swimming speed: {__instance.movementSpeed}");
+                    //owoSkin.LOG($"Swimming speed: {__instance.movementSpeed}");
                     owoSkin.StartSwimming();
                     owoSkin.seaGlideEquipped = __instance.motorMode == Player.MotorMode.Seaglide;
                     int delay = (int)((30 - Math.Truncate(__instance.movementSpeed * 10)) * 100);
@@ -387,8 +387,9 @@ namespace OWO_Subnautica
             public static void Postfix(uGUI_ExosuitHUD __instance)
             {
                 if (CantFeel()) return;
+                var exo = Player.main.GetVehicle() as Exosuit;
 
-                if (health != Traverse.Create(__instance).Field("lastHealth").GetValue<int>())
+                if (health > Traverse.Create(__instance).Field("lastHealth").GetValue<int>())
                 {
                     owoSkin.Feel("Exosuit Impact", 3);
 
@@ -401,11 +402,9 @@ namespace OWO_Subnautica
         public class OnExosuitLanding
         {
             [HarmonyPostfix]
-            public static void Postfix()
+            public static void Postfix(Exosuit __instance)
             {
-                if (CantFeel()) return;
-
-                Log.LogWarning("Acabo de aterrizar sobre la tierra");
+                if (CantFeel() || !__instance.playerFullyEntered) return;
                 owoSkin.Feel("Exosuit Landing", 2);
             }
         }
@@ -420,18 +419,8 @@ namespace OWO_Subnautica
             {
                 if (CantFeel()) return;
 
-                //double timeLastJumped = (double)(Traverse.Create(__instance).Field("timeLastJumped").GetValue<float>() + 1.0);
-
-                //Log.LogWarning("JUMP " + grounded + " " + timeLastJumped + " " + (double)Time.time);
-
-                //if (grounded && timeLastJumped <= (double)Time.time)
-                //{
-                //    owoSkin.Feel("Jump Landing");
-                //}
-
                 if (grounded != Traverse.Create(__instance).Field("onGround").GetValue<bool>())
                 {
-                    Log.LogWarning("Presaltando");
                     owoSkin.Feel("Exosuit Pre Jump", 2);
                 }
 
@@ -441,7 +430,6 @@ namespace OWO_Subnautica
             public static void Postfix(Exosuit __instance) {
                 if (grounded != Traverse.Create(__instance).Field("onGround").GetValue<bool>())
                 {
-                    Log.LogWarning("Acabo de saltar");
                     owoSkin.Feel("Exosuit Jump", 2);
                 }
 
@@ -640,9 +628,7 @@ namespace OWO_Subnautica
                 if (CantFeel()) return;
 
                 owoSkin.StopLowFood();
-                owoSkin.LOG($"Eating - {DateTime.UtcNow}");
                 owoSkin.Feel("Eating", 2);
-                owoSkin.LOG("Finish Eating");
             }
         }
 
