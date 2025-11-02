@@ -77,11 +77,11 @@ namespace OWO_Subnautica
             }
         }
 
-        [HarmonyPatch(typeof(PrecursorTeleporter), "OnPlayerCinematicModeEnd")]
+        [HarmonyPatch(typeof(Player), "WaitForTeleportation")]
         public class OnTeleportingStart
         {
-            [HarmonyPostfix]
-            public static void Postfix()
+            [HarmonyPrefix]
+            public static void Prefix()
             {
                 if (CantFeel()) return;
 
